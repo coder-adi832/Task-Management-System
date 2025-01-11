@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* colour palettes 
+#0998b7  
+#00a6e0
+#edfcff    good for background
+#e6f4f1 */
+
+#taskContainer::-webkit-scrollbar, #AllTaskScroll::-webkit-scrollbar{
+    display: none;
+}
