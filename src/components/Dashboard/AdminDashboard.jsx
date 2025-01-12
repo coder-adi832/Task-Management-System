@@ -3,10 +3,11 @@ import Header from '../../others/Header'
 import CreateTask from '../../others/CreateTask'
 import AllTask from '../../others/AllTask'
 
-const AdminDashboard = () => {
+const AdminDashboard = ({data}) => {
+  console.log(data)
   return (
     <div className='h-screen w-full py-[2%] px-[8%]'>
-        <Header/>
+        <Header data = {data}/>
         <CreateTask /> 
         <div id="AllTaskScroll" className="flex flex-col gap-4 h-[210px] overflow-auto ">
             <AllTask />

@@ -11,8 +11,8 @@ const EmployeeDashboard = ({data}) => {
         <Header data = {data}/>
         <TaskListNumber data = {data} />
         <div id="taskContainer" className='h-[400px] w-full mt-10 flex p-6 gap-8 flex-nowrap flex-shrink-0 overflow-auto'>
-            {data.tasks.map(function(f){
-              return <TaskList title = {f.taskTitle} Description = {f.taskDescription} date = {f.taskDate} category = {f.taskCategory}/>
+            {data.tasks.map(function(f,idx){
+              return <TaskList key ={idx} title = {f.taskTitle} Description = {f.taskDescription} date = {f.taskDate} category = {f.taskCategory}/>
             })}
         </div>
     </div>

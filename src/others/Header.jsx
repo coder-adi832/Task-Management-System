@@ -2,7 +2,8 @@ import React from 'react'
 
 const Header = ({data}) => {
   const logout = () => {
-    localStorage.setItem('loggedInUser',JSON.stringify({role : ''}))
+    localStorage.clear()
+    window.location.reload()
   }
   return (
     <div className='flex justify-between m-2'>
