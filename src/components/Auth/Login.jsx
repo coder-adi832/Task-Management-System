@@ -27,7 +27,7 @@ const Login = ({handleLogin}) => {
                 setemail(e.target.value)
             }}
             type="email" placeholder='Email' required className='p-2 w-full bg-transparent focus:outline-none placeholder:text-white'/>
-            <img src="src\assets\email_2669570.png"  className='h-8'/>
+            <img src="./src/assets/email_2669570.png"  className='h-8'/>
         </div>
         <div className='flex border-2 mt-8 rounded-3xl p-2'>
             <input 
@@ -36,7 +36,7 @@ const Login = ({handleLogin}) => {
                 setpassword(e.target.value)
             }}
             type="password" placeholder='Password' required className='p-2 w-full bg-transparent text-white focus:outline-none placeholder:text-white'/>
-            <img src="src\assets\browser_1768684.png"  className='h-8'/>
+            <img src="./src/assets/browser_1768684.png"  className='h-8'/>
         </div>
         <div className='flex justify-between mt-8 rounded-2xl'>
             <label className='flex gap-2'>
