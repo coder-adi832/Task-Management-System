@@ -1,16 +1,16 @@
 import React from 'react'
 
-const Header = ({data}) => {
+const Header = (props) => {
   const logout = () => {
-    localStorage.clear()
-    window.location.reload()
+    localStorage.setItem('loggedInUser','')
+    props.changeUser('')
   }
   return (
     <div className='flex justify-between m-2'>
         <div>
             <span className='text-2xl'>Hello!!!</span> <br /> 
             <span className='text-3xl'>
-                {data.name} 👋
+                {props.data.name} 👋
             </span>
         </div>
         <div>

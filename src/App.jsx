@@ -11,35 +11,29 @@ const App = () => {
   const [LoggedInUserData, setLoggedInUserData] = useState(null)
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('loggedInUser'); 
+    const loggedInUser = localStorage.getItem('loggedInUser') 
     if (loggedInUser) {
-      const userData = JSON.parse(loggedInUser);
-      console.log(userData)
+      const userData = JSON.parse(loggedInUser)
       setuser(userData.role);
-      setLoggedInUserData(userData.data);
-      console.log(LoggedInUserData)
+      setLoggedInUserData(userData.data)
     }
   }, []);
   
   const handleLogin = (email,password) => {
+    const isadmin = authData.admins.find((e)=> email == e.email && password == e.password)
+    if(authData && isadmin){
+      setuser('admin')
+      setLoggedInUserData(isadmin)
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin', data : isadmin}))
 
-    if(authData){
-      const isadmin = authData.admins.find((e) => e.email == email && e.password == password)
-      const isemployee = authData.employees.find((e) => e.email == email && e.password == password)
-      if(isadmin){
-        console.log("THIS IS ADMIN")
-        localStorage.setItem('loggedInUser',JSON.stringify({role : 'admin', data : isadmin}))
-        window.location.reload()
+    }
+    else if( authData) {
+      const isemployee = authData.employees.find((e)=> email == e.email && password == e.password)
+      if(isemployee){
+        setuser('employee')
+        setLoggedInUserData(isemployee)
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: isemployee}))
       }
-      else if(isemployee){
-        console.log("THIS IS EMPLOYEE")
-        localStorage.setItem('loggedInUser',JSON.stringify({role : 'employee', data : isemployee}))
-        window.location.reload()
-      }
-      else{
-        alert("INVALID CREDENTIALS")
-      }
-      
     }
     else{
       alert("INVALID CREDENTIALS")
@@ -50,8 +44,8 @@ const App = () => {
     <>
 
     {!user ? <Login handleLogin = {handleLogin}/> : ''}
-    {user == 'admin' ? <AdminDashboard  data = {LoggedInUserData}/> : ''}
-    {user == 'employee' ?  <EmployeeDashboard data = {LoggedInUserData}/> : ''}
+    {user == 'admin' ? <AdminDashboard data = {LoggedInUserData} changeUser = {setuser} /> : (user == 'employee' ? <EmployeeDashboard  data = {LoggedInUserData} changeUser = {setuser}/> : '' )}
+
     </>
   )
 }
