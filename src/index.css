@@ -8,6 +8,6 @@
 #edfcff    good for background
 #e6f4f1 */
 
-#taskContainer::-webkit-scrollbar, #AllTaskScroll::-webkit-scrollbar{
+#taskContainer::-webkit-scrollbar, #AllTaskScroll::-webkit-scrollbar, #discriptionbox::-webkit-scrollbar{
     display: none;
 }

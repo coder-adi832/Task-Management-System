@@ -21,19 +21,17 @@ const App = () => {
   
   const handleLogin = (email,password) => {
     const isadmin = authData.admins.find((e)=> email == e.email && password == e.password)
+    const isemployee = authData.employees.find((e)=> email == e.email && password == e.password)
     if(authData && isadmin){
       setuser('admin')
       setLoggedInUserData(isadmin)
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin', data : isadmin}))
 
     }
-    else if( authData) {
-      const isemployee = authData.employees.find((e)=> email == e.email && password == e.password)
-      if(isemployee){
+    else if( authData && isemployee) {
         setuser('employee')
         setLoggedInUserData(isemployee)
         localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: isemployee}))
-      }
     }
     else{
       alert("INVALID CREDENTIALS")
